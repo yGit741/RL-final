@@ -1,13 +1,13 @@
-# from typing import Any, Union, Optional
-# import numpy as np
-# import matplotlib.pyplot as plt
-# import cv2
-# from gymnasium import Env
+from typing import Any, Union, Optional
+from gymnasium import Env
+import numpy as np
+import matplotlib.pyplot as plt
+import cv2
 
 def show_full_frame_rgb(
     env: Env,
     obs: Optional[np.ndarray] = None,
-    fig_size: tuple[int, int] = (8, 8),
+    fig_size: tuple[int, int] = (4, 4),
     title: Optional[str] = None
 ) -> None:
     """
@@ -50,7 +50,7 @@ def show_full_frame_rgb(
         # Show the plot
         plt.show()
         plt.close()  # Clean up resources
-        # return img
+        return img
         
     except Exception as e:
         plt.close()  # Ensure figure is closed even if there's an error
@@ -59,7 +59,7 @@ def show_full_frame_rgb(
 def show_partial_greyscale(
     env: Env,
     obs: np.ndarray,
-    fig_size: tuple[int, int] = (8, 8),
+    fig_size: tuple[int, int] = (4, 4),
     title: Optional[str] = None,
     cmap: str = "gray"
 ) -> None:
@@ -115,7 +115,6 @@ def show_partial_greyscale(
     except Exception as e:
         plt.close()  # Ensure figure is closed even if there's an error
         raise e
-
 
 def show_state_full_and_partial(env, obs):
     """
