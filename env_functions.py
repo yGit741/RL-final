@@ -44,11 +44,12 @@ def create_multiroom_env(
         render_mode=render_mode
     )
 
-    env.max_steps = max_steps
-
     # Apply the requested wrappers
     env = RGBImgPartialObsWrapper(env)  # Converts observations to partial RGB images
     env = ImgObsWrapper(env)  # Ensures the observation space is image-based
+
+    # Set the maximum number of steps    
+    env.unwrapped.max_steps = max_steps
 
     # Reset environment with optional seed
     obs, _ = env.reset(seed=seed) if seed is not None else env.reset()
