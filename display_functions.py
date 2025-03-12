@@ -8,7 +8,8 @@ def show_full_frame_rgb(
     env: Env,
     obs: Optional[np.ndarray] = None,
     fig_size: tuple[int, int] = (4, 4),
-    title: Optional[str] = None
+    title: Optional[str] = None,
+    return_rgb: bool = False
 ) -> None:
     """
     Displays the current frame of the environment in RGB format.
@@ -50,7 +51,9 @@ def show_full_frame_rgb(
         # Show the plot
         plt.show()
         plt.close()  # Clean up resources
-        return img
+
+        if return_rgb:
+            return img
         
     except Exception as e:
         plt.close()  # Ensure figure is closed even if there's an error
@@ -61,7 +64,8 @@ def show_partial_greyscale(
     obs: np.ndarray,
     fig_size: tuple[int, int] = (4, 4),
     title: Optional[str] = None,
-    cmap: str = "gray"
+    cmap: str = "gray",
+    return_grayscale_array: bool = False
 ) -> None:
     """
     Displays the partial visible frame in grayscale format.
@@ -110,7 +114,8 @@ def show_partial_greyscale(
         # Show the plot
         plt.show()
         plt.close()  # Clean up resources
-        return frame_gray  
+        if return_grayscale_array:
+            return frame_gray  
         
     except Exception as e:
         plt.close()  # Ensure figure is closed even if there's an error
